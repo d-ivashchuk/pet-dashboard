@@ -60,11 +60,6 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
   <StyledNavi>
     <li>
-      <NavLink to={routes.LANDING} exact>
-        Landing
-      </NavLink>
-    </li>
-    <li>
       <NavLink to={routes.SIGN_IN} exact>
         Sign In
       </NavLink>

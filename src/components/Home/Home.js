@@ -1,55 +1,77 @@
 import React from 'react';
 import withAuthorization from '../../containers/withAuthorization/withAuthorization.js';
 import styled from 'styled-components';
+import PetCard from '../PetCard/PetCard.js';
+import NewPetCard from '../NewPet/NewPetCard/NewPetCard.js';
 import { db } from '../../firebase';
+import { auth } from '../../firebase/firebase.js';
+import Backdrop from '../UI/Backdrop/backdrop.js';
+import LoadingIndicator from '../UI/LoadingIndicator/LoadingIndicator.js';
+import NewPetForm from '../NewPet/NewPetForm/NewPetForm.js';
 
-const StyledUl = styled.ul`
+const StyledLayout = styled.div`
   display: flex;
-  margin: auto;
-  background: #bada55;
-  width: 300px;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0px 29px 36px -22px rgba(0, 0, 0, 0.75);
-  padding: 0;
-`;
-const StyledLi = styled.li`
-  font-size: 1.2rem;
-  list-style: none;
-  text-transform: capitalize;
-  padding: 5px;
-  color: white;
-  font-weight: bold;
+  flex-wrap: wrap;
 `;
 
 class Home extends React.Component {
   state = {
-    users: null
+    users: null,
+    pets: null,
+    showBackdrop: false
   };
-  componentDidMount() {
+  fetchData = () => {
+    db
+      .onceGetPets()
+      .then(snapshot => this.setState(() => ({ pets: snapshot.val() })));
     db
       .onceGetUsers()
       .then(snapshot => this.setState(() => ({ users: snapshot.val() })));
+  };
+
+  componentDidMount() {
+    if (!this.state.pets) this.fetchData();
   }
+
+  toggleBackdrop = () => {
+    this.setState({
+      showBackdrop: !this.state.showBackdrop
+    });
+  };
+
   render() {
-    const { users } = this.state;
+    const currentUser = auth.currentUser.email.slice(0, -4);
+    const { pets, showBackdrop } = this.state;
+
     return (
-      <React.Fragment>
-        <h1 style={{ textAlign: 'center' }}>Home Page</h1>
-        <h2 style={{ textAlign: 'center' }}>List of Users</h2>
-        {!!users && <UserList users={users} />}
-      </React.Fragment>
+      <StyledLayout>
+        <NewPetCard clicked={this.toggleBackdrop} />
+        {pets ? (
+          pets[currentUser] ? (
+            Object.entries(pets[currentUser]).map(pet => {
+              return (
+                <PetCard
+                  key={pet[0]}
+                  ownerName={currentUser}
+                  petName={pet[1].name}
+                  years={pet[1].age}
+                  photoUrl="https://source.unsplash.com/random"
+                />
+              );
+            })
+          ) : (
+            <div>No pets currently</div>
+          )
+        ) : (
+          <LoadingIndicator />
+        )}
+
+        <Backdrop show={showBackdrop} clicked={this.toggleBackdrop} />
+        <NewPetForm show={showBackdrop} reloadData={this.fetchData} />
+      </StyledLayout>
     );
   }
 }
-
-const UserList = ({ users }) => (
-  <StyledUl>
-    {Object.keys(users).map(key => (
-      <StyledLi key={key}>{users[key].username}</StyledLi>
-    ))}
-  </StyledUl>
-);
 
 const authCondition = authUser => !!authUser;
 

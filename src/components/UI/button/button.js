@@ -1,0 +1,28 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #ed3330;
+  padding: 15px;
+  border-radius: 5px;
+  display: block;
+  border: none;
+  margin: auto;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in 0s;
+  &:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.1s ease-in 0s;
+  }
+`;
+
+const Button = props => (
+  <StyledButton type={props.type}>{props.label}</StyledButton>
+);
+
+export default Button;
