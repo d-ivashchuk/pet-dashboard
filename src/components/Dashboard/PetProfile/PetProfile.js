@@ -11,6 +11,7 @@ import parrot from '../../../assets/pet_icons/parrot.svg';
 
 import Icon from '../../UI/Icon/Icon.js';
 import LoadingIndicator from '../../UI/LoadingIndicator/LoadingIndicator.js';
+import IconLoader from '../../UI/IconLoader/IconLoader.js';
 
 const StyledProfile = styled.div`
   display: flex;
@@ -96,15 +97,23 @@ class PetProfile extends Component {
 
     const pet = this.state.pet ? (
       <StyledProfile>
-        <Icon src={icon} height="150px" width="150px" />
+        {this.state.pet ? (
+          <Icon src={icon} height="150px" width="150px" />
+        ) : (
+          <IconLoader height="150px" width="150px" />
+        )}
         <StyledAge>{this.state.pet.age}</StyledAge>
         <StyledName>{this.state.pet.name}</StyledName>
         <StyledAnimal>{this.state.pet.animal}</StyledAnimal>
       </StyledProfile>
     ) : (
-      <LoadingIndicator />
+      <IconLoader height="150px" width="150px" />
     );
-    return <div>{pet}</div>;
+    return (
+      <React.Fragment>
+        <div>{pet}</div>
+      </React.Fragment>
+    );
   }
 }
 

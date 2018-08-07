@@ -14,6 +14,7 @@ const StyledNewPetForm = styled.form`
   z-index: 500;
   background-color: white;
   width: 40%;
+  max-width: 800px;
   border: 1px solid #ccc;
   border-radius: 20px;
   box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.13);
