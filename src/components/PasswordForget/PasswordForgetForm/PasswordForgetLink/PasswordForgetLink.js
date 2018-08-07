@@ -7,9 +7,9 @@ const StyledLink = styled.div`
   margin-top: 30px;
   a {
     text-decoration: none;
-    color: #10aded;
+    color: #0d9ed9;
     &:hover {
-      color: #10ad99;
+      color: #10aded;
     }
   }
 `;

@@ -9,12 +9,14 @@ import * as routes from '../../constants/routes.js';
 const StyledNavi = styled.ul`
   display: flex;
   position: sticky;
+  top: 0;
   background-color: #10aded;
   margin: 0;
   height: 3em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   align-items: center;
   padding-left: 0;
+  z-index: 999;
 
   > li {
     text-decoration: none;

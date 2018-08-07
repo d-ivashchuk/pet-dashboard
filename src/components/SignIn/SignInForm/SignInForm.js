@@ -1,38 +1,54 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { auth } from '../../../firebase/index.js';
 import * as routes from '../../../constants/routes.js';
-import styled from 'styled-components';
+import Icon from '../../UI/Icon/Icon.js';
+
+import reward from '../../../assets/pet_icons/reward.svg';
 
 const StyledForm = styled.form`
-  width: 300px;
-  margin: auto;
-  margin-top: 3rem;
-  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+  background: white;
+  max-width: 300px;
+  margin: 100px auto 100px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 3px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `;
 
 const StyledInput = styled.input`
-  display: block;
-  font-size: 1em;
-  padding: 20px;
-  -webkit-appearance: none;
-  border: 0;
   outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-sizing: border-box;
+  font-size: 14px;
 `;
 
 const StyledButton = styled.button`
-  display: block;
-  font-size: 1em;
-  width: 100%;
-  padding: 20px;
-  font-family: 'Roboto';
-  -webkit-appearance: none;
   outline: 0;
+  background: #be3433;
+  width: 100%;
   border: 0;
-  color: white;
-  background: #10aded;
+  padding: 15px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  color: #ffffff;
+  font-size: 14px;
+  transition: all 0.3 ease;
+  cursor: pointer;
   &:hover {
-    background: #10ad99;
+    background: #ef3b3a;
     cursor: pointer;
   }
   &:disabled {
@@ -85,6 +101,7 @@ class SignInForm extends Component {
 
     return (
       <StyledForm onSubmit={this.onSubmit}>
+        <Icon width="160px" height="160px" src={reward} />
         <StyledInput
           value={email}
           onChange={event =>
@@ -110,6 +127,7 @@ class SignInForm extends Component {
             Password is wrong or user does not exist.
           </StyledErrorMessage>
         )}
+        {this.props.children}
       </StyledForm>
     );
   }

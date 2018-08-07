@@ -6,9 +6,10 @@ import PasswordForgetLink from '../PasswordForget/PasswordForgetForm/PasswordFor
 
 const signIn = ({ history }) => (
   <React.Fragment>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <SignInForm history={history}>
+      <PasswordForgetLink />
+      <SignUpLink />
+    </SignInForm>
   </React.Fragment>
 );
 

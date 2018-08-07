@@ -12,6 +12,8 @@ import NewPetForm from '../NewPet/NewPetForm/NewPetForm.js';
 const StyledLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
 `;
 
 class Home extends React.Component {
