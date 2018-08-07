@@ -22,3 +22,5 @@ export const doCreatePet = (name, age, animal, breed, user) => {
 
 export const onceGetUsers = () => db.ref('users').once('value');
 export const onceGetPets = () => db.ref('pets').once('value');
+export const onceGetPet = (user, petId) =>
+  db.ref(`pets/${user}/${petId}`).once('value');

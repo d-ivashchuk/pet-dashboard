@@ -12,6 +12,7 @@ import SignIn from './components/SignIn/SignIn.js';
 import PasswordForget from './components/PasswordForget/PasswordForget.js';
 import Home from './components/Home/Home.js';
 import Account from './components/Account/Account.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
 
 import withAuthentication from './containers/withAuthentication/withAuthentication.js';
 
@@ -39,6 +40,7 @@ const App = () => {
         <Route exact path={routes.PASSWORD_FORGET} component={PasswordForget} />
         <Route exact path={routes.HOME} component={Home} />
         <Route exact path={routes.ACCOUNT} component={Account} />
+        <Route path={routes.DASHBOARD} component={Dashboard} />
       </React.Fragment>
     </BrowserRouter>
   );

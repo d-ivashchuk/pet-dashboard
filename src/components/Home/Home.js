@@ -30,7 +30,9 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    if (!this.state.pets) this.fetchData();
+    if (!this.state.pets) {
+      this.fetchData();
+    }
   }
 
   toggleBackdrop = () => {
@@ -43,6 +45,11 @@ class Home extends React.Component {
     const currentUser = auth.currentUser.email.slice(0, -4);
     const { pets, showBackdrop } = this.state;
 
+    // if (pets) {
+    //   console.log(Object.keys(pets[currentUser]));
+    //   console.log(Object.entries(pets[currentUser]));
+    // }
+
     return (
       <StyledLayout>
         <NewPetCard clicked={this.toggleBackdrop} />
@@ -52,10 +59,13 @@ class Home extends React.Component {
               return (
                 <PetCard
                   key={pet[0]}
-                  ownerName={currentUser}
+                  currentUser={currentUser}
                   petName={pet[1].name}
                   years={pet[1].age}
+                  animal={pet[1].animal}
+                  breed={pet[1].breed}
                   photoUrl="https://source.unsplash.com/random"
+                  link={pet[0]}
                 />
               );
             })
@@ -67,7 +77,11 @@ class Home extends React.Component {
         )}
 
         <Backdrop show={showBackdrop} clicked={this.toggleBackdrop} />
-        <NewPetForm show={showBackdrop} reloadData={this.fetchData} />
+        <NewPetForm
+          toggleBackdrop={this.toggleBackdrop}
+          show={showBackdrop}
+          reloadData={this.fetchData}
+        />
       </StyledLayout>
     );
   }

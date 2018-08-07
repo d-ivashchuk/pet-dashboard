@@ -41,6 +41,7 @@ const StyledButton = styled.button`
     cursor: not-allowed;
   }
 `;
+
 const StyledErrorMessage = styled.div`
   padding: 1em;
   text-align: center;

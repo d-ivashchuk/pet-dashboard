@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledLink = styled.div`
   color: #fff !important;
   text-transform: uppercase;
+  text-align: center;
   background: #ed3330;
   padding: 15px;
   border-radius: 5px;
@@ -12,6 +14,7 @@ const StyledButton = styled.button`
   margin: auto;
   margin-top: 5px;
   cursor: pointer;
+  width: 80px;
   transition: all 0.1s ease-in 0s;
   &:hover {
     background: #434343;
@@ -19,17 +22,21 @@ const StyledButton = styled.button`
     box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
     transition: all 0.1s ease-in 0s;
   }
-  &:disabled {
-    background-color: #ccc;
-    color: #777;
-    cursor: not-allowed;
+`;
+
+const StyledLinkWrapper = styled.div`
+  > a {
+    text-decoration: none;
+    font-size: 11px;
   }
 `;
 
-const Button = props => (
-  <StyledButton disabled={props.disabled} type={props.type}>
-    {props.label}
-  </StyledButton>
+const signUpLink = props => (
+  <StyledLinkWrapper>
+    <Link to={props.route}>
+      <StyledLink>{props.label}</StyledLink>
+    </Link>
+  </StyledLinkWrapper>
 );
 
-export default Button;
+export default signUpLink;

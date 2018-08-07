@@ -68,7 +68,7 @@ class Input extends React.Component {
         <StyledInput
           onChange={this.props.onValueChange}
           value={this.props.value}
-          type="text"
+          type={this.props.type}
           id="inp"
           placeholder="&nbsp;"
         />

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+
 import styled from 'styled-components';
-import Button from '../UI/button/button.js';
+
+import Link from '../UI/Link/Link.js';
+import foot from '../../assets/pet_icons/foot.svg';
 
 const StyledCard = styled.div`
   margin: 10px;
@@ -15,29 +18,45 @@ const StyledImg = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 100px;
+  margin-bottom: 10px;
 `;
-const StyledInfo = styled.p`
-  margin-top: 10px;
-  padding: 5px;
+
+const StyledName = styled.div`
+  display: block;
   text-align: center;
-`;
-const StyledYears = styled.p`
-  margin: 0;
   font-weight: bold;
   font-size: 30px;
+  margin-top: 5px;
+  color: #665;
+`;
+const StyledAge = styled.div`
+  display: block;
+  margin: auto;
+  padding: 5px;
   text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  max-width: 30px;
+  border-radius: 50px;
+  border: 2px solid #10aded;
+  color: #665;
+`;
+const StyledAnimal = styled.div`
+  display: block;
+  text-align: center;
+  opacity: 0.5;
+  margin-bottom: 30px;
 `;
 
 class PetCard extends Component {
   render() {
     return (
       <StyledCard>
-        <StyledImg src={this.props.photoUrl} alt="" />
-        <StyledInfo>
-          {this.props.petName} proud pet of {this.props.ownerName}
-        </StyledInfo>
-        <StyledYears>{this.props.years}</StyledYears>
-        <Button label="To profile" />
+        <StyledImg src={foot} alt="" />
+        <StyledAge>{this.props.years}</StyledAge>
+        <StyledName>{this.props.petName}</StyledName>
+        <StyledAnimal>{this.props.animal}</StyledAnimal>
+        <Link route={`/dashboard/${this.props.link}`} label="To profile" />
       </StyledCard>
     );
   }
