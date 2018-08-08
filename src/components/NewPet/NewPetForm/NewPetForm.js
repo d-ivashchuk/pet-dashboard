@@ -11,7 +11,7 @@ import { auth } from '../../../firebase/firebase.js';
 const StyledNewPetForm = styled.form`
   position: fixed;
 
-  z-index: 500;
+  z-index: 101;
   background-color: white;
   width: 40%;
   max-width: 800px;
@@ -26,6 +26,12 @@ const StyledNewPetForm = styled.form`
   opacity: ${props => (props.show ? '1' : '0')};
   z-index: ${props => (props.show ? '500' : '-1')};
   display: : ${props => (props.show ? 'block' : 'none')};
+  @media(max-width: 560px) {
+  position: absolute;
+  left: 10%;
+  width:80%;
+
+  }
 `;
 
 const StyledImg = styled.img`

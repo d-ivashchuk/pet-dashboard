@@ -16,7 +16,7 @@ const StyledNavi = styled.ul`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   align-items: center;
   padding-left: 0;
-  z-index: 999;
+  z-index: 99;
 
   > li {
     text-decoration: none;
@@ -29,12 +29,12 @@ const StyledNavi = styled.ul`
     color: white;
     font-weight: bold;
     &:hover {
-        border-bottom: 3px solid #ccc;
-      transition: all 0.3s
+        border-bottom: 1.5px solid #ccc;
+      transition: all 0.2s
     }
     &.active {
-      transition: all 0.3s
-      border-bottom: 3px solid #ccc;
+      transition: all 0.2s
+      border-bottom: 1.5px solid #ccc;
     }
   }
 `;

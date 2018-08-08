@@ -5,15 +5,21 @@ import kennel from '../../../assets/pet_icons/kennel.svg';
 import Icon from '../../UI/Icon/Icon.js';
 
 const StyledCard = styled.div`
-  margin: 10px;
-  min-width: 200px;
-  height: 300px;
+  position: sticky;
+  background: white;
+  top: 48px;
+  max-width: 1140px;
+  margin: 10px auto 10px auto;
   padding: 20px;
+  z-index: 100;
   border-radius: 3px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  @media (max-width: 560px) {
+    margin: 10px auto 10px auto;
+  }
   > span {
     display: flex;
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
     height: 60px;
     width: 60px;
     background: #10aded;
@@ -49,19 +55,12 @@ const StyledPlusButton = styled.div`
   font-weight: bold;
   font-size: 40px;
 `;
-const StyledInfo = styled.p`
-  margin-top: 45px;
-  font-weight: bold;
-  font-size: 30px;
-  text-align: center;
-`;
 
 class NewPetCard extends Component {
   render() {
     return (
       <StyledCard>
         <Icon height="100px" width="100px" src={kennel} />
-        <StyledInfo>Add a new pet</StyledInfo>
         <span onClick={this.props.clicked}>
           <StyledPlusButton>+</StyledPlusButton>
         </span>
