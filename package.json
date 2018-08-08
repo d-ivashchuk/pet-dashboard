@@ -2,7 +2,7 @@
   "name": "firebase-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://d-ivashchuk.github.io/firebaseApp/",
+  "homepage": "https://d-ivashchuk.github.io/petDashboardnpm ",
   "dependencies": {
     "firebase": "^5.2.0",
     "react": "^16.4.1",
