@@ -11,12 +11,11 @@ const animate = keyframes`
   }
 `;
 
-const StyledIconLoader = styled.div`
+const StyledTextLoader = styled.div`
   width: ${props => props.width};
   height: ${props => props.height};
   background: #ccc;
-  margin:20px auto 0 auto;
-  border-radius: 100%;
+  margin:5px auto 0 auto;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
@@ -28,8 +27,20 @@ const StyledIconLoader = styled.div`
   position: relative;
 `;
 
-const IconLoader = props => (
-  <StyledIconLoader height={props.height} width={props.width} />
-);
+const TextLoader = props => {
+  const lines = parseInt(props.lines, 10);
+  const elements = [...Array(lines).keys()];
+  return (
+    <React.Fragment>
+      {elements.map(element => (
+        <StyledTextLoader
+          key={element}
+          width={props.width}
+          height={props.height}
+        />
+      ))}
+    </React.Fragment>
+  );
+};
 
-export default IconLoader;
+export default TextLoader;

@@ -9,9 +9,13 @@ import hamster from '../../../assets/pet_icons/hamster.svg';
 import fish from '../../../assets/pet_icons/fish.svg';
 import parrot from '../../../assets/pet_icons/parrot.svg';
 
+import PetInfo from './PetInfo/PetInfo.js';
+import PetDescription from './PetDescription/PetDescription.js';
+import PetMarking from './PetMarking/PetMarking.js';
+import PetVaccinations from './PetVaccinations/PetVaccinations.js';
 import Icon from '../../UI/Icon/Icon.js';
-import LoadingIndicator from '../../UI/LoadingIndicator/LoadingIndicator.js';
 import IconLoader from '../../UI/IconLoader/IconLoader.js';
+import TextLoader from '../../UI/TextLoader/TextLoader.js';
 
 const StyledProfile = styled.div`
   display: flex;
@@ -47,7 +51,7 @@ const StyledAnimal = styled.div`
   display: block;
   text-align: center;
   opacity: 0.5;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
 
 class PetProfile extends Component {
@@ -68,7 +72,7 @@ class PetProfile extends Component {
   render() {
     let animal = '';
     let icon = null;
-    this.state.pet ? (animal = this.state.pet.animal) : (animal = 'foot');
+    this.state.pet ? (animal = this.state.pet.info.animal) : (animal = 'foot');
 
     switch (animal.toLowerCase()) {
       case 'dog':
@@ -98,16 +102,23 @@ class PetProfile extends Component {
     const pet = this.state.pet ? (
       <StyledProfile>
         {this.state.pet ? (
-          <Icon src={icon} height="150px" width="150px" />
-        ) : (
-          <IconLoader height="150px" width="150px" />
-        )}
-        <StyledAge>{this.state.pet.age}</StyledAge>
-        <StyledName>{this.state.pet.name}</StyledName>
-        <StyledAnimal>{this.state.pet.animal}</StyledAnimal>
+          <React.Fragment>
+            <Icon src={icon} height="150px" width="150px" />
+            <StyledAge>{this.state.pet.info.age}</StyledAge>
+            <StyledName>{this.state.pet.info.name}</StyledName>
+            <StyledAnimal>{this.state.pet.info.animal}</StyledAnimal>
+            <PetDescription description={this.state.pet.description} />
+            <PetInfo info={this.state.pet.info} />
+            <PetMarking marking={this.state.pet.marking} />
+            <PetVaccinations vaccinations={this.state.pet.vaccinations} />
+          </React.Fragment>
+        ) : null}
       </StyledProfile>
     ) : (
-      <IconLoader height="150px" width="150px" />
+      <React.Fragment>
+        <IconLoader height="150px" width="150px" />
+        <TextLoader height="20px" width="100px" lines="3" />
+      </React.Fragment>
     );
     return (
       <React.Fragment>

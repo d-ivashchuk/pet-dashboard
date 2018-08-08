@@ -62,10 +62,10 @@ class Home extends React.Component {
                 <PetCard
                   key={pet[0]}
                   currentUser={currentUser}
-                  petName={pet[1].name}
-                  years={pet[1].age}
-                  animal={pet[1].animal}
-                  breed={pet[1].breed}
+                  petName={pet[1].info.name}
+                  years={pet[1].info.age}
+                  animal={pet[1].info.animal}
+                  breed={pet[1].info.breed}
                   photoUrl="https://source.unsplash.com/random"
                   link={pet[0]}
                 />

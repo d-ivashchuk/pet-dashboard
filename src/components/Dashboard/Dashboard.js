@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PetProfile from './PetProfile/PetProfile.js';
-import PetInfo from './PetInfo/PetInfo.js';
 import AuthUserContext from '../../context/AuthUserContext/AuthUserContext.js';
 
 class Dashboard extends Component {
@@ -14,7 +13,6 @@ class Dashboard extends Component {
                 user={authUser.email}
                 petId={this.props.location.pathname.replace('/dashboard/', '')}
               />
-              <PetInfo />
             </React.Fragment>
           ) : null
         }

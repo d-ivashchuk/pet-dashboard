@@ -29,10 +29,12 @@ const StyledNavi = styled.ul`
     color: white;
     font-weight: bold;
     &:hover {
-      color: #333;
+        border-bottom: 3px solid #ccc;
+      transition: all 0.3s
     }
     &.active {
-      color: #333;
+      transition: all 0.3s
+      border-bottom: 3px solid #ccc;
     }
   }
 `;
