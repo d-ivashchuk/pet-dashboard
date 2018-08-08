@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.65027555.css",
   "main.css.map": "static/css/main.65027555.css.map",
-  "main.js": "static/js/main.393223af.js",
-  "main.js.map": "static/js/main.393223af.js.map",
+  "main.js": "static/js/main.49ca5cab.js",
+  "main.js.map": "static/js/main.49ca5cab.js.map",
   "static/media/cat.svg": "static/media/cat.042d414c.svg",
   "static/media/close.svg": "static/media/close.d2eac24c.svg",
   "static/media/dog.svg": "static/media/dog.7b8f012d.svg",
@@ -12,5 +12,6 @@
   "static/media/kennel.svg": "static/media/kennel.b8e14ffd.svg",
   "static/media/parrot.svg": "static/media/parrot.3f0f40cc.svg",
   "static/media/passport.svg": "static/media/passport.e1358b9c.svg",
-  "static/media/reward.svg": "static/media/reward.502ede94.svg"
+  "static/media/reward.svg": "static/media/reward.502ede94.svg",
+  "static/media/wanted.svg": "static/media/wanted.c4598936.svg"
 }
