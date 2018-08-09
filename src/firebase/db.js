@@ -39,5 +39,17 @@ export const doCreatePet = (name, age, animal, breed, user) => {
 
 export const onceGetUsers = () => db.ref('users').once('value');
 export const onceGetPets = () => db.ref('pets').once('value');
+
 export const onceGetPet = (user, petId) =>
   db.ref(`pets/${user}/${petId}`).once('value');
+
+export const onceGetInfo = (user, petId) =>
+  db.ref(`pets/${user}/${petId}/info`).once('value');
+
+export const updateInfo = (user, petId, value) =>
+  db.ref(`pets/${user}/${petId}/info`).set({ ...value });
+export const onceGetMarking = (user, petId) =>
+  db.ref(`pets/${user}/${petId}/marking`).once('value');
+
+export const updateMarking = (user, petId, value) =>
+  db.ref(`pets/${user}/${petId}/marking`).set({ ...value });

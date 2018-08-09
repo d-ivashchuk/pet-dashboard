@@ -76,23 +76,18 @@ class PetProfile extends Component {
 
     switch (animal.toLowerCase()) {
       case 'dog':
-        console.log('dog');
         icon = dog;
         break;
       case 'cat':
-        console.log('cat');
         icon = cat;
         break;
       case 'hamster':
-        console.log('hamster');
         icon = hamster;
         break;
       case 'fish':
-        console.log('fish');
         icon = fish;
         break;
       case 'parrot':
-        console.log('parrot');
         icon = parrot;
         break;
       default:
@@ -108,8 +103,18 @@ class PetProfile extends Component {
             <StyledName>{this.state.pet.info.name}</StyledName>
             <StyledAnimal>{this.state.pet.info.animal}</StyledAnimal>
             <PetDescription description={this.state.pet.description} />
-            <PetInfo info={this.state.pet.info} />
-            <PetMarking marking={this.state.pet.marking} />
+            <PetInfo
+              fetch={this.fetchData}
+              user={this.props.user}
+              petId={this.props.petId}
+              info={this.state.pet.info}
+            />
+            <PetMarking
+              marking={this.state.pet.marking}
+              fetch={this.fetchData}
+              user={this.props.user}
+              petId={this.props.petId}
+            />
             <PetVaccinations vaccinations={this.state.pet.vaccinations} />
           </React.Fragment>
         ) : null}
