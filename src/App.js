@@ -31,7 +31,7 @@ const App = () => {
         <Switch>
           <Route
             exact
-            path={process.env.PUBLIC_URL + routes.SIGN_IN}
+            path={process.env.PUBLIC_URL + routes.LANDING}
             component={SignIn}
           />
           <Route exact path={routes.SIGN_IN} component={SignIn} />
