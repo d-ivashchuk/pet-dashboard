@@ -60,23 +60,18 @@ class PetCard extends Component {
 
     switch (animal.toLowerCase()) {
       case 'dog':
-        console.log('dog');
         icon = dog;
         break;
       case 'cat':
-        console.log('cat');
         icon = cat;
         break;
       case 'hamster':
-        console.log('hamster');
         icon = hamster;
         break;
       case 'fish':
-        console.log('fish');
         icon = fish;
         break;
       case 'parrot':
-        console.log('parrot');
         icon = parrot;
         break;
       default:

@@ -1,6 +1,7 @@
 import React from 'react';
 import withAuthorization from '../../containers/withAuthorization/withAuthorization.js';
 import styled from 'styled-components';
+import Waypoint from 'react-waypoint';
 
 import { db } from '../../firebase';
 import { auth } from '../../firebase/firebase.js';
@@ -14,10 +15,13 @@ import Icon from '../UI/Icon/Icon.js';
 
 import wanted from '../../assets/pet_icons/wanted.svg';
 
+const StyledWrapper = styled.div`
+  margin: auto;
+`;
 const StyledLayout = styled.div`
-  width: auto;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   max-width: 1200px;
   margin: auto;
 `;
@@ -26,7 +30,8 @@ class Home extends React.Component {
   state = {
     users: null,
     pets: null,
-    showBackdrop: false
+    showBackdrop: false,
+    showNewPetCard: false
   };
   fetchData = () => {
     db
@@ -48,6 +53,12 @@ class Home extends React.Component {
       showBackdrop: !this.state.showBackdrop
     });
   };
+  toggleNewPetCard = () => {
+    console.log(123);
+    this.setState({
+      showNewPetCard: !this.state.showNewPetCard
+    });
+  };
 
   render() {
     const currentUser = auth.currentUser.email.slice(0, -4);
@@ -55,23 +66,35 @@ class Home extends React.Component {
 
     return (
       <React.Fragment>
-        <NewPetCard clicked={this.toggleBackdrop} />
+        <Waypoint
+          onEnter={() => {
+            this.toggleNewPetCard();
+          }}
+          onLeave={() => {
+            this.toggleNewPetCard();
+          }}
+        />
+
+        <NewPetCard
+          show={this.state.showNewPetCard}
+          clicked={this.toggleBackdrop}
+        />
         <StyledLayout>
-          <div />
           {pets ? (
             pets[currentUser] ? (
               Object.entries(pets[currentUser]).map(pet => {
                 return (
-                  <PetCard
-                    key={pet[0]}
-                    currentUser={currentUser}
-                    petName={pet[1].info.name}
-                    years={pet[1].info.age}
-                    animal={pet[1].info.animal}
-                    breed={pet[1].info.breed}
-                    photoUrl="https://source.unsplash.com/random"
-                    link={pet[0]}
-                  />
+                  <StyledWrapper key={pet[0]}>
+                    <PetCard
+                      currentUser={currentUser}
+                      petName={pet[1].info.name}
+                      years={pet[1].info.age}
+                      animal={pet[1].info.animal}
+                      breed={pet[1].info.breed}
+                      photoUrl="https://source.unsplash.com/random"
+                      link={pet[0]}
+                    />
+                  </StyledWrapper>
                 );
               })
             ) : (
@@ -84,6 +107,7 @@ class Home extends React.Component {
           )}
 
           <Backdrop show={showBackdrop} clicked={this.toggleBackdrop} />
+
           <NewPetForm
             toggleBackdrop={this.toggleBackdrop}
             show={showBackdrop}

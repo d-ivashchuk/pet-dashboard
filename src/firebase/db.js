@@ -3,9 +3,7 @@ import { db } from './firebase.js';
 export const doCreateUser = (id, username, email) =>
   db.ref(`users/${id}`).set({
     username,
-    email,
-    petName: 'dima',
-    ownerName: 'jora'
+    email
   });
 
 export const doCreatePet = (name, age, animal, breed, user) => {
@@ -16,24 +14,20 @@ export const doCreatePet = (name, age, animal, breed, user) => {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est cupiditate placeat obcaecati id incidunt, error officiis alias ea atque totam maiores ad sunt impedit aut saepe, facilis dolorem illum. Doloremque.',
       info: {
-        sex: 'male',
-        birthDate: '14/01/2018',
-        color: 'grey',
+        sex: '-',
+        birthDate: 'xx/xx/xxxx',
+        color: '-',
         name: name,
         age: age,
         animal: animal,
         breed: breed
       },
       marking: {
-        code: 616093900359337,
-        applicationDate: '5/03/2018',
-        location: 'Lena Stona 5241'
+        code: '-',
+        applicationDate: 'xx/xx/xxxx',
+        location: '-'
       },
-      vaccinations: {
-        type: 'anti-rabies',
-        date: '27.04.2018',
-        validTill: '27.04.2019'
-      }
+      vaccinations: ''
     });
 };
 
@@ -42,14 +36,27 @@ export const onceGetPets = () => db.ref('pets').once('value');
 
 export const onceGetPet = (user, petId) =>
   db.ref(`pets/${user}/${petId}`).once('value');
-
 export const onceGetInfo = (user, petId) =>
   db.ref(`pets/${user}/${petId}/info`).once('value');
-
-export const updateInfo = (user, petId, value) =>
-  db.ref(`pets/${user}/${petId}/info`).set({ ...value });
 export const onceGetMarking = (user, petId) =>
   db.ref(`pets/${user}/${petId}/marking`).once('value');
 
+export const updateInfo = (user, petId, value) =>
+  db.ref(`pets/${user}/${petId}/info`).set({ ...value });
 export const updateMarking = (user, petId, value) =>
   db.ref(`pets/${user}/${petId}/marking`).set({ ...value });
+
+export const deletePet = (user, petId) =>
+  db.ref(`pets/${user}/${petId}`).remove();
+export const deleteVaccination = (user, petId, vaccinationId) =>
+  db.ref(`pets/${user}/${petId}/vaccinations/${vaccinationId}`).remove();
+
+export const doAddVaccination = (user, petId, type, date, validTill) =>
+  db
+    .ref(`pets/${user}/${petId}/vaccinations`)
+    .push()
+    .set({
+      type: type,
+      date: date,
+      validTill: validTill
+    });

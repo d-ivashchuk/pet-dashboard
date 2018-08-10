@@ -6,12 +6,22 @@ import Backdrop from '../../../UI/Backdrop/backdrop.js';
 
 import EditPanel from '../../../UI/EditPanel/EditPanel.js';
 
+const StyledWrapper = styled.div`
+  max-width: 400px;
+  width: 40%;
+  @media (max-width: 500px) {
+    width: 65%;
+  }
+`;
 const StyledPetMarking = styled.div`
   text-align: center;
   margin: 0 auto 5px auto;
-  color: #ccc;
+  color: #665;
   padding: 20px;
   border: 1px solid #ccc;
+  div {
+    margin: 10px;
+  }
 `;
 
 class PetMarking extends Component {
@@ -26,10 +36,13 @@ class PetMarking extends Component {
   };
   render() {
     return (
-      <div>
-        <EditPanel clicked={this.toggleBackdrop} />
+      <StyledWrapper>
+        <EditPanel editable label="Marking" clicked={this.toggleBackdrop} />
         <StyledPetMarking>
-          <div>Transponder alphanumeric code: {this.props.marking.code}</div>
+          <div>
+            Transponder alphanumeric code:
+            {this.props.marking.code}
+          </div>
           <div>Date of application: {this.props.marking.applicationDate}</div>
           <div>Location: {this.props.marking.location}</div>
         </StyledPetMarking>
@@ -44,7 +57,7 @@ class PetMarking extends Component {
           clicked={this.toggleBackdrop}
           show={this.state.showBackdrop}
         />
-      </div>
+      </StyledWrapper>
     );
   }
 }

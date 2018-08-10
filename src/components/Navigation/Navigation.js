@@ -16,7 +16,7 @@ const StyledNavi = styled.ul`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   align-items: center;
   padding-left: 0;
-  z-index: 99;
+  z-index: 120;
 
   > li {
     text-decoration: none;

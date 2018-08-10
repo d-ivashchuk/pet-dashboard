@@ -6,12 +6,23 @@ import EditPanel from '../../../UI/EditPanel/EditPanel.js';
 import PetInfoEdit from './PetInfoEdit/PetInfoEdit.js';
 import Backdrop from '../../../UI/Backdrop/backdrop.js';
 
+const StyledWrapper = styled.div`
+  max-width: 400px;
+  width: 40%;
+  @media (max-width: 500px) {
+    width: 65%;
+  }
+`;
+
 const StyledPetInfo = styled.div`
   text-align: center;
   margin: 0 auto 5px auto;
-  color: #ccc;
+  color: #665;
   padding: 20px;
   border: 1px solid #ccc;
+  div {
+    margin: 10px;
+  }
 `;
 
 class PetInfo extends Component {
@@ -27,8 +38,8 @@ class PetInfo extends Component {
 
   render() {
     return (
-      <div>
-        <EditPanel clicked={this.toggleBackdrop} />
+      <StyledWrapper>
+        <EditPanel editable label="Profile" clicked={this.toggleBackdrop} />
         <StyledPetInfo>
           <div>Name: {this.props.info.name}</div>
           <div>Species: {this.props.info.animal}</div>
@@ -48,7 +59,7 @@ class PetInfo extends Component {
           clicked={this.toggleBackdrop}
           show={this.state.showBackdrop}
         />
-      </div>
+      </StyledWrapper>
     );
   }
 }

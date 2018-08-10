@@ -13,6 +13,7 @@ import PetInfo from './PetInfo/PetInfo.js';
 import PetDescription from './PetDescription/PetDescription.js';
 import PetMarking from './PetMarking/PetMarking.js';
 import PetVaccinations from './PetVaccinations/PetVaccinations.js';
+import DeletePet from './DeletePet/DeletePet.js';
 import Icon from '../../UI/Icon/Icon.js';
 import IconLoader from '../../UI/IconLoader/IconLoader.js';
 import TextLoader from '../../UI/TextLoader/TextLoader.js';
@@ -115,7 +116,13 @@ class PetProfile extends Component {
               user={this.props.user}
               petId={this.props.petId}
             />
-            <PetVaccinations vaccinations={this.state.pet.vaccinations} />
+            <PetVaccinations
+              user={this.props.user}
+              petId={this.props.petId}
+              vaccinations={this.state.pet.vaccinations}
+              fetch={this.fetchData}
+            />
+            <DeletePet user={this.props.user} petId={this.props.petId} />
           </React.Fragment>
         ) : null}
       </StyledProfile>
@@ -123,6 +130,9 @@ class PetProfile extends Component {
       <React.Fragment>
         <IconLoader height="150px" width="150px" />
         <TextLoader height="20px" width="100px" lines="3" />
+        <br />
+        <br />
+        <TextLoader height="15px" width="200px" lines="4" />
       </React.Fragment>
     );
     return (

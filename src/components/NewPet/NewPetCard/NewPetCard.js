@@ -14,9 +14,13 @@ const StyledCard = styled.div`
   z-index: 100;
   border-radius: 3px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.5s linear;
+  transform: ${props => (props.show ? 'translateY(0)' : 'translateY(-100vh)')};
+  opacity: ${props => (props.show ? '1' : '0')};
   @media (max-width: 560px) {
     margin: 10px auto 10px auto;
   }
+
   > span {
     display: flex;
     margin: 20px auto 0 auto;
@@ -59,7 +63,7 @@ const StyledPlusButton = styled.div`
 class NewPetCard extends Component {
   render() {
     return (
-      <StyledCard>
+      <StyledCard show={this.props.show}>
         <Icon height="100px" width="100px" src={kennel} />
         <span onClick={this.props.clicked}>
           <StyledPlusButton>+</StyledPlusButton>

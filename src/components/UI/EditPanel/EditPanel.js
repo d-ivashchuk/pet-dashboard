@@ -7,6 +7,7 @@ import edit from '../../../assets/ui_icons/edit.svg';
 
 const StyledEditPanel = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #10aded;
   padding: 5px;
@@ -15,10 +16,12 @@ const StyledEditPanel = styled.div`
 
 const EditPanel = props => (
   <StyledEditPanel>
-    <div>Pet profile</div>
-    <div onClick={props.clicked}>
-      <Icon src={edit} width="20px" height="20px" margin />
-    </div>
+    <div>{props.label}</div>
+    {props.editable ? (
+      <div onClick={props.clicked}>
+        <Icon src={edit} width="20px" height="20px" margin />
+      </div>
+    ) : null}
   </StyledEditPanel>
 );
 

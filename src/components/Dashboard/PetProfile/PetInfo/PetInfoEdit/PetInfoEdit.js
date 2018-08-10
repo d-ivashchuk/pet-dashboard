@@ -57,8 +57,10 @@ class PetInfoEdit extends React.Component {
     name: '',
     age: '',
     breed: '',
+    animal: '',
     color: '',
-    birthDate: ''
+    birthDate: '',
+    sex: ''
   };
 
   fetchData = (user, pet) => {
@@ -107,6 +109,11 @@ class PetInfoEdit extends React.Component {
           onValueChange={this.onValueChange.bind(this, 'breed')}
         />
         <Input
+          label="species"
+          value={this.state.animal}
+          onValueChange={this.onValueChange.bind(this, 'animal')}
+        />
+        <Input
           label="color"
           value={this.state.color}
           onValueChange={this.onValueChange.bind(this, 'color')}
@@ -115,6 +122,11 @@ class PetInfoEdit extends React.Component {
           label="birthDate"
           value={this.state.birthDate}
           onValueChange={this.onValueChange.bind(this, 'birthDate')}
+        />
+        <Input
+          label="sex"
+          value={this.state.sex}
+          onValueChange={this.onValueChange.bind(this, 'sex')}
         />
         <Button type="submit" label="Edit" />
       </StyledPetInfoEdit>

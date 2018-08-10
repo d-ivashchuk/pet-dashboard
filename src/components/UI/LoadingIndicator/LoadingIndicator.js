@@ -5,9 +5,9 @@ const StyledLoading = styled.div`
   display: inline-block;
   position: relative;
   top: 100px;
-  left: 80px;
   width: 64px;
   height: 64px;
+  margin: auto;
   &:after {
     content: ' ';
     display: block;
@@ -17,7 +17,8 @@ const StyledLoading = styled.div`
     margin: 6px;
     box-sizing: border-box;
     border: 49px solid grey;
-    border-color: grey transparent grey transparent;
+    border-color: rgba(16, 173, 237, 0.7) transparent rgba(237, 51, 48, 0.7)
+      transparent;
     animation: lds-hourglass 1.2s infinite;
   }
   @keyframes lds-hourglass {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   color: #fff !important;
   text-transform: uppercase;
-  background: #ed3330;
+  background: ${props => (props.color ? props.color : '#ed3330')};
   padding: 15px;
   border-radius: 5px;
   display: block;
@@ -27,7 +27,11 @@ const StyledButton = styled.button`
 `;
 
 const Button = props => (
-  <StyledButton disabled={props.disabled} type={props.type}>
+  <StyledButton
+    onClick={props.clicked}
+    color={props.color}
+    disabled={props.disabled}
+    type={props.type}>
     {props.label}
   </StyledButton>
 );
