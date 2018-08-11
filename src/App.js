@@ -1,11 +1,8 @@
 import React from 'react';
 import { injectGlobal } from 'styled-components';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import { firebase } from './firebase/index.js';
 
 import * as routes from './constants/routes.js';
-
-import Navigation from './components/Navigation/Navigation.js';
 
 import SignUp from './components/SignUp/SignUp.js';
 import SignIn from './components/SignIn/SignIn.js';
@@ -27,7 +24,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <React.Fragment>
-        <Navigation />
         <Switch>
           <Route
             exact

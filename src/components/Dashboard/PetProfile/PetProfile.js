@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { db } from '../../../firebase';
+import { withRouter } from 'react-router-dom';
 
 import foot from '../../../assets/pet_icons/foot.svg';
 import dog from '../../../assets/pet_icons/dog.svg';
@@ -8,7 +9,9 @@ import cat from '../../../assets/pet_icons/cat.svg';
 import hamster from '../../../assets/pet_icons/hamster.svg';
 import fish from '../../../assets/pet_icons/fish.svg';
 import parrot from '../../../assets/pet_icons/parrot.svg';
+import back from '../../../assets/ui_icons/back.svg';
 
+import Navigation from '../../Navigation/Navigation.js';
 import PetInfo from './PetInfo/PetInfo.js';
 import PetDescription from './PetDescription/PetDescription.js';
 import PetMarking from './PetMarking/PetMarking.js';
@@ -17,6 +20,7 @@ import DeletePet from './DeletePet/DeletePet.js';
 import Icon from '../../UI/Icon/Icon.js';
 import IconLoader from '../../UI/IconLoader/IconLoader.js';
 import TextLoader from '../../UI/TextLoader/TextLoader.js';
+import Headroom from 'react-headroom';
 
 const StyledProfile = styled.div`
   display: flex;
@@ -26,6 +30,7 @@ const StyledProfile = styled.div`
   > img {
     margin-top: 20px;
   }
+  margin-bottom: 40px;
 `;
 
 const StyledName = styled.div`
@@ -64,6 +69,9 @@ class PetProfile extends Component {
     db
       .onceGetPet(user, pet)
       .then(snapshot => this.setState(() => ({ pet: snapshot.val() })));
+  };
+  goBackHandler = () => {
+    this.props.history.push('/home');
   };
 
   componentDidMount() {
@@ -137,10 +145,21 @@ class PetProfile extends Component {
     );
     return (
       <React.Fragment>
+        <Headroom>
+          <Navigation />
+          <Icon
+            src={back}
+            height="30px"
+            width="30px"
+            margin="20px 0 0 20px"
+            clickable
+            clicked={this.goBackHandler}
+          />
+        </Headroom>
         <div>{pet}</div>
       </React.Fragment>
     );
   }
 }
 
-export default PetProfile;
+export default withRouter(PetProfile);

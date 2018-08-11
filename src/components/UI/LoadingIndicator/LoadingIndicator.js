@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledLoading = styled.div`
   display: inline-block;
   position: relative;
+  left: -20px;
   top: 100px;
   width: 64px;
   height: 64px;

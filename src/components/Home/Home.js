@@ -1,7 +1,8 @@
 import React from 'react';
 import withAuthorization from '../../containers/withAuthorization/withAuthorization.js';
 import styled from 'styled-components';
-import Waypoint from 'react-waypoint';
+import Headroom from 'react-headroom';
+import Navigation from '../Navigation/Navigation.js';
 
 import { db } from '../../firebase';
 import { auth } from '../../firebase/firebase.js';
@@ -54,7 +55,6 @@ class Home extends React.Component {
     });
   };
   toggleNewPetCard = () => {
-    console.log(123);
     this.setState({
       showNewPetCard: !this.state.showNewPetCard
     });
@@ -66,19 +66,11 @@ class Home extends React.Component {
 
     return (
       <React.Fragment>
-        <Waypoint
-          onEnter={() => {
-            this.toggleNewPetCard();
-          }}
-          onLeave={() => {
-            this.toggleNewPetCard();
-          }}
-        />
+        <Headroom>
+          <Navigation />
+          <NewPetCard clicked={this.toggleBackdrop} />
+        </Headroom>
 
-        <NewPetCard
-          show={this.state.showNewPetCard}
-          clicked={this.toggleBackdrop}
-        />
         <StyledLayout>
           {pets ? (
             pets[currentUser] ? (

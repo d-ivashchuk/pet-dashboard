@@ -8,7 +8,6 @@ import * as routes from '../../constants/routes.js';
 
 const StyledNavi = styled.ul`
   display: flex;
-  position: sticky;
   top: 0;
   background-color: #10aded;
   margin: 0;
@@ -29,12 +28,12 @@ const StyledNavi = styled.ul`
     color: white;
     font-weight: bold;
     &:hover {
-        border-bottom: 1.5px solid #ccc;
-      transition: all 0.2s
+      transition: all 0.2s;
+      color: #616161;
     }
     &.active {
-      transition: all 0.2s
-      border-bottom: 1.5px solid #ccc;
+      transition: all 0.2s;
+      color: #616161;
     }
   }
 `;

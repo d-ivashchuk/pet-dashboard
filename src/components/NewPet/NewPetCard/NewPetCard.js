@@ -7,16 +7,13 @@ import Icon from '../../UI/Icon/Icon.js';
 const StyledCard = styled.div`
   position: sticky;
   background: white;
-  top: 48px;
   max-width: 1140px;
   margin: 10px auto 10px auto;
   padding: 20px;
   z-index: 100;
   border-radius: 3px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  transition: all 0.5s linear;
-  transform: ${props => (props.show ? 'translateY(0)' : 'translateY(-100vh)')};
-  opacity: ${props => (props.show ? '1' : '0')};
+
   @media (max-width: 560px) {
     margin: 10px auto 10px auto;
   }
@@ -30,7 +27,7 @@ const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 40px;
-    transition: all 1s;
+
     &:hover {
       height: 70px;
       width: 70px;
