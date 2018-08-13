@@ -11,7 +11,7 @@ const StyledForm = styled.form`
   z-index: 1;
   background: white;
   max-width: 300px;
-  margin: 100px auto 100px;
+  margin: 100px auto 50px auto;
   padding: 30px;
   text-align: center;
   border-radius: 3px;
