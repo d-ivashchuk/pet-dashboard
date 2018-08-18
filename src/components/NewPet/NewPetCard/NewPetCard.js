@@ -27,6 +27,7 @@ const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 40px;
+    transition: all 1s;
 
     &:hover {
       height: 70px;
