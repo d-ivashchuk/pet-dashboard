@@ -26,7 +26,7 @@ const StyledPetMarkingEdit = styled.form`
   z-index: ${props => (props.show ? '500' : '-1')};
   display: : ${props => (props.show ? 'block' : 'none')};
   @media(max-width: 560px) {
-  position: absolute;
+  position: fixed;
   left: 10%;
   width:80%;
 
@@ -60,9 +60,9 @@ class PetMarkingEdit extends React.Component {
   };
 
   fetchData = (user, pet) => {
-    db
-      .onceGetMarking(user, pet)
-      .then(snapshot => this.setState(() => ({ ...snapshot.val() })));
+    db.onceGetMarking(user, pet).then(snapshot =>
+      this.setState(() => ({ ...snapshot.val() }))
+    );
   };
 
   updateMarking(user, pet, updatedInfo) {

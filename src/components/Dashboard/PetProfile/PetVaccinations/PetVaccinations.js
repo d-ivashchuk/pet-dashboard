@@ -61,7 +61,7 @@ class PetVaccinations extends Component {
         <StyledPetVaccinations>
           {!this.state.showNewVaccine ? (
             <Button
-              color="#ccc"
+              color="#10aded"
               label="New vaccination"
               clicked={this.toggleNewVaccine}
             />
