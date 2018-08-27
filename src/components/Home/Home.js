@@ -35,12 +35,12 @@ class Home extends React.Component {
     showNewPetCard: false
   };
   fetchData = () => {
-    db
-      .onceGetPets()
-      .then(snapshot => this.setState(() => ({ pets: snapshot.val() })));
-    db
-      .onceGetUsers()
-      .then(snapshot => this.setState(() => ({ users: snapshot.val() })));
+    db.onceGetPets().then(snapshot =>
+      this.setState(() => ({ pets: snapshot.val() }))
+    );
+    db.onceGetUsers().then(snapshot =>
+      this.setState(() => ({ users: snapshot.val() }))
+    );
   };
 
   componentDidMount() {
@@ -91,7 +91,12 @@ class Home extends React.Component {
               })
             ) : (
               <React.Fragment>
-                <Icon width="150px" height="150px" src={wanted} />
+                <Icon
+                  margin="20px auto 10px auto"
+                  width="150px"
+                  height="150px"
+                  src={wanted}
+                />
               </React.Fragment>
             )
           ) : (

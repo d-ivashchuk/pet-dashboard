@@ -19,7 +19,7 @@ const StyledPetInfoEdit = styled.form`
   box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.13);
   padding: 30px;
   left: 30%;
-  top: 25%;
+  top: 10%;
   box-sizing: border-box;
   transition: all 0.3s ease-out;
   opacity: ${props => (props.show ? '1' : '0')};
@@ -64,9 +64,9 @@ class PetInfoEdit extends React.Component {
   };
 
   fetchData = (user, pet) => {
-    db
-      .onceGetInfo(user, pet)
-      .then(snapshot => this.setState(() => ({ ...snapshot.val() })));
+    db.onceGetInfo(user, pet).then(snapshot =>
+      this.setState(() => ({ ...snapshot.val() }))
+    );
   };
 
   updateInfo(user, pet, updatedInfo) {
